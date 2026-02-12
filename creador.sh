@@ -1,11 +1,16 @@
 #!/bin/bash
-for i in {1..10}
+rm -rf proyecto_*
+
+# Aquí el script te hace una pregunta
+echo "¿Cuántas carpetas quieres crear hoy, Galloger?"
+read cantidad  # Aquí el script se detiene y espera a que escribas un número
+
+for i in $(seq 1 $cantidad)
 do
-    # Creamos la carpeta
     mkdir -p "proyecto_$i"
-    # Escribimos el mensaje dentro del archivo
     echo "Propiedad de Galloger" > "proyecto_$i/secreto.txt"
-    # Cambiamos los permisos (Solo lectura para el dueño)
     chmod 400 "proyecto_$i/secreto.txt"
     echo "Carpeta proyecto_$i creada con éxito."
 done
+
+echo "¡Listo! He creado $cantidad carpetas para ti."
